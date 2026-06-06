@@ -1,0 +1,1079 @@
+/* ==========================================================================
+   01. GLOBAL VARIABLES & RESET INFRASTRUCTURE
+   ========================================================================== */
+:root {
+    --bg-creme: #faf6f0;
+    --text-dark: #1a1a1a;
+    --accent-pink: #ffb7c5;
+    --accent-yellow: #fffdd0;
+    --border-soft: rgba(0, 0, 0, 0.1);
+
+    /* Typography Font Rules */
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'Space Grotesk', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-creme);
+    color: var(--text-dark);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Custom Mechanics Desktop Cursor Element */
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--text-dark);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
+    z-index: 9999;
+    display: none;
+    /* Invisible on touchscreens, active on mouse tracking */
+}
+
+@media (pointer: fine) {
+    .custom-cursor {
+        display: block;
+    }
+}
+
+/* ==========================================================================
+   02. LAYOUT HEADER NAV & BANNER TICKER SYSTEM
+   ========================================================================== */
+.announcement-bar {
+    background-color: var(--accent-pink);
+    color: #000;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 12px 20px;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--text-dark);
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 4%;
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.main-header .logo a {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+}
+
+.nav-item {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--text-dark);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--text-dark);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.nav-item:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.connect-btn {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--text-dark);
+    text-decoration: none;
+    border: 1px solid var(--text-dark);
+    padding: 10px 24px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.connect-btn:hover {
+    background-color: var(--text-dark);
+    color: var(--bg-creme);
+}
+
+/* ==========================================================================
+   03. HERO WORKBENCH AREA
+   ========================================================================== */
+.portfolio-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 4%;
+}
+
+.hero-section {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 40px;
+    padding: 80px 0;
+}
+
+.primary-btn {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 183, 197, 0.4);
+}
+
+.secondary-btn {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.secondary-btn:hover {
+    background-color: var(--text-dark);
+    color: var(--bg-creme);
+}
+
+/* Graphic Canvas SVG Animations */
+.aesthetic-canvas {
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.canvas-svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+.float-animation {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.pulse {
+    animation: pulse 4s ease-in-out infinite;
+}
+
+.delay-1 {
+    animation-delay: 1s;
+}
+
+.delay-2 {
+    animation-delay: 2s;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 0.3;
+    }
+}
+
+.glow-circle {
+    mix-blend-mode: multiply;
+    filter: blur(20px);
+}
+
+.glow-pink {
+    fill: var(--accent-pink);
+}
+
+.glow-yellow {
+    fill: #fef08a;
+}
+
+.orbit-line {
+    fill: none;
+    stroke: var(--border-soft);
+    stroke-width: 0.75;
+    stroke-dasharray: 4 4;
+}
+
+.guitar-outline,
+.guitar-soundhole,
+.guitar-bridge {
+    stroke: var(--text-dark);
+}
+
+.svg-moon {
+    fill: #fef08a;
+    stroke: var(--text-dark);
+    stroke-width: 0.75;
+}
+
+/* ==========================================================================
+   04. CHARACTER / CONTEXT INTRO GRID BLOCKS
+   ========================================================================== */
+.intro-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--border-soft);
+    border-bottom: 1px solid var(--border-soft);
+    padding: 40px 0;
+    margin-bottom: 60px;
+}
+
+.intro-card {
+    padding: 0 30px;
+}
+
+.intro-card:first-child {
+    padding-left: 0;
+}
+
+.intro-card:last-child {
+    padding-right: 0;
+}
+
+.border-left {
+    border-left: 1px solid var(--border-soft);
+}
+
+.card-num {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    opacity: 0.7;
+}
+
+/* ==========================================================================
+   05. MASONRY MATRIX LAYOUT & WORKSPACE CARDS
+   ========================================================================== */
+.lookbook-masonry {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    align-items: start;
+    margin-bottom: 80px;
+}
+
+.masonry-item {
+    background: #ffffff;
+    border: 1px solid var(--border-soft);
+    border-radius: 16px;
+    padding: 30px;
+    position: relative;
+    height: auto !important;
+    /* Forces boxes to scale out dynamically */
+}
+
+.highlight-card {
+    background: #fbfbf9;
+    border: 1px solid var(--text-dark);
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.item-index {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+}
+
+.status-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--border-soft);
+}
+
+.status-tag.live {
+    background-color: var(--accent-yellow);
+    color: #000;
+}
+
+.status-tag.science {
+    background-color: #e0f2fe;
+    color: #0369a1;
+}
+
+.status-tag.literary {
+    background-color: #f3e8ff;
+    color: #6b21a8;
+}
+
+.status-tag.creative {
+    background-color: #fef2f2;
+    color: #991b1b;
+}
+
+/* Audio / Song Player Panel Mechanics */
+.music-player-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.player-top {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.vinyl-mock {
+    width: 65px;
+    height: 65px;
+    background: #111;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vinyl-disc {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: repeating-radial-gradient(#222, #111 4px, #222 5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vinyl-label {
+    width: 25px;
+    height: 25px;
+    background: var(--accent-pink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vinyl-center {
+    width: 6px;
+    height: 6px;
+    background: var(--bg-creme);
+    border-radius: 50%;
+}
+
+.player-meta .track-title {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+
+.player-meta .track-artist {
+    font-size: 0.85rem;
+    opacity: 0.6;
+}
+
+.track-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    background: var(--border-soft);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-top: 4px;
+}
+
+/* Audio Wave Visualizer Bars Grid */
+.visualizer-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 40px;
+    padding: 0 10px;
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 8px;
+}
+
+.visualizer-bar {
+    width: 4px;
+    background: var(--text-dark);
+    height: 15%;
+    border-radius: 2px;
+    transition: height 0.15s ease;
+}
+
+.player-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.player-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-btn {
+    background: var(--text-dark);
+    color: #fff;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.track-selector-box {
+    margin-top: 10px;
+}
+
+.selector-heading {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    opacity: 0.4;
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+}
+
+.track-row {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 6px;
+    background: rgba(0, 0, 0, 0.01);
+    transition: background 0.2s ease;
+}
+
+.track-row:hover,
+.track-row.active {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.track-num {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    width: 25px;
+    opacity: 0.5;
+}
+
+.track-name {
+    font-size: 0.85rem;
+    flex-grow: 1;
+}
+
+.lyrics-trigger-btn {
+    background: none;
+    border: 1px solid var(--text-dark);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    font-family: var(--font-sans);
+}
+
+.lyrics-trigger-btn:hover {
+    background: var(--text-dark);
+    color: #fff;
+}
+
+/* ==========================================================================
+   06. STELLAR ATLAS INTERACTIVE AREA
+   ========================================================================== */
+.astro-map-container {
+    position: relative;
+}
+
+.sky-chart {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    background: #0d1117;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.chart-lines {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.const-line {
+    stroke: rgba(255, 255, 255, 0.15);
+    stroke-width: 1;
+    stroke-dasharray: 2 2;
+}
+
+.star-node {
+    position: absolute;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 5;
+}
+
+.star-dot {
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #fff;
+    transition: transform 0.2s ease;
+}
+
+.star-node:hover .star-dot {
+    transform: scale(1.4);
+}
+
+.star-name {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.7rem;
+    margin-top: 4px;
+    font-family: var(--font-mono);
+}
+
+.star-detail-panel {
+    position: absolute;
+    bottom: -100px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border: 1px solid var(--text-dark);
+    border-radius: 12px;
+    padding: 15px 20px;
+    transform: translateY(20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 10;
+}
+
+.star-detail-panel.active {
+    bottom: 0;
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.panel-close {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.star-detail-content {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    opacity: 0.8;
+}
+
+/* ==========================================================================
+   07. POETRY VERSE LAB UNLOCKED BARRIERS FIX
+   ========================================================================== */
+.poetry-notebook {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: visible !important;
+}
+
+.notebook-spine {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 15px;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.05), transparent);
+    border-right: 1px dashed rgba(0, 0, 0, 0.08);
+}
+
+.notebook-sheet {
+    overflow: visible !important;
+    padding: 25px;
+}
+
+.sheet-header {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    opacity: 0.4;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 8px;
+}
+
+.sheet-content {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+.poem-body {
+    height: auto !important;
+    overflow: visible !important;
+    display: block !important;
+    white-space: normal !important;
+}
+
+.sheet-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sheet-nav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+}
+
+.sheet-nav-btn:hover {
+    opacity: 1;
+}
+
+/* ==========================================================================
+   08. BOOKSHELF CARD LISTS
+   ========================================================================== */
+.reading-journal-box {
+    width: 100%;
+}
+
+.book-card {
+    transition: transform 0.2s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-2px);
+}
+
+.notes-link {
+    transition: opacity 0.2s ease;
+}
+
+.notes-link:hover {
+    opacity: 0.7;
+}
+
+/* ==========================================================================
+   09. CONNECT SECURE COMMUNICATIONS FORM
+   ========================================================================== */
+.connect-section {
+    padding: 40px 0 100px 0;
+}
+
+.connect-card {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    background: #ffffff;
+    border: 1px solid var(--text-dark);
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.connect-text-side {
+    background: #1a1a1a;
+    color: #ffffff;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.connect-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--accent-pink);
+    margin-bottom: 15px;
+}
+
+.connect-heading {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.connect-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    opacity: 0.7;
+}
+
+.connect-form-side {
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #fffbfa;
+}
+
+.minimal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+    opacity: 0.5;
+}
+
+.form-input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--text-dark);
+    padding: 10px 0;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.form-input:focus {
+    border-bottom-color: var(--accent-pink);
+}
+
+.submit-btn {
+    background: var(--text-dark);
+    color: #ffffff;
+    border: none;
+    padding: 15px 32px;
+    border-radius: 30px;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    align-self: flex-start;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #333333;
+}
+
+.form-success-alert {
+    margin-top: 20px;
+    padding: 12px;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 8px;
+    color: #166534;
+    font-size: 0.85rem;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ==========================================================================
+   10. FOOTER AREA
+   ========================================================================== */
+.main-footer {
+    border-top: 1px solid var(--border-soft);
+    padding: 60px 4% 40px 4%;
+    background: #ffffff;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.footer-brand h2 {
+    font-family: var(--font-sans);
+    font-size: 1.2rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 8px;
+}
+
+.footer-brand p {
+    font-size: 0.8rem;
+    opacity: 0.5;
+}
+
+.footer-tags {
+    display: flex;
+    gap: 10px;
+}
+
+.tag {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    border: 1px solid var(--border-soft);
+    padding: 4px 10px;
+    border-radius: 4px;
+    opacity: 0.6;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    border-top: 1px solid var(--border-soft);
+    padding-top: 20px;
+}
+
+.back-to-top {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+}
+
+/* ==========================================================================
+   11. UNIVERSAL OVERLAY SLIDING DRAWER SYSTEM
+   ========================================================================== */
+.overlay-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: 450px;
+    height: 100%;
+    z-index: 2000;
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.overlay-drawer.active {
+    right: 0;
+}
+
+.drawer-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+}
+
+.overlay-drawer.active .drawer-backdrop {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.drawer-content {
+    background: #fffbfa;
+    width: 100%;
+    height: 100%;
+    padding: 50px 35px;
+    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow-y: auto;
+    border-left: 1px solid var(--text-dark);
+}
+
+.drawer-close {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.drawer-header {
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.drawer-meta {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    opacity: 0.4;
+    letter-spacing: 0.1em;
+}
+
+.drawer-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 400;
+    margin: 4px 0;
+}
+
+.drawer-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    background: var(--accent-pink);
+    padding: 2px 10px;
+    border-radius: 20px;
+    margin-top: 4px;
+}
+
+.chords-guide-box {
+    background: #ffffff;
+    border: 1px dashed var(--text-dark);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 25px;
+}
+
+.guide-title {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    opacity: 0.5;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.lyrics-sheet {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    line-height: 1.6;
+    font-style: italic;
+    opacity: 0.85;
+}
+
+/* ==========================================================================
+   12. RESPONSIVE MEDIA BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 968px) {
+    .hero-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 40px 0;
+    }
+
+    .hero-bio {
+        margin: 20px auto 0 auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .intro-card {
+        padding: 0;
+        border-left: none;
+    }
+
+    .lookbook-masonry {
+        grid-template-columns: 1fr;
+    }
+
+    .connect-card {
+        grid-template-columns: 1fr;
+    }
+
+    .connect-text-side {
+        padding: 40px;
+    }
+
+    .connect-form-side {
+        padding: 40px;
+    }
+}
