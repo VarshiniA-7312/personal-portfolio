@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Varshini</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,50 +17,58 @@
 
     <div class="custom-cursor"></div>
 
-    <div class="announcement-bar"
-        style="background-color: #ffb7c5; color: #000; text-align: center; font-weight: 500; padding: 10px 0;">
+    <div class="announcement-bar">
         <span>"I wonder if stars know they're beautiful"</span>
     </div>
 
+    <!-- Mobile hamburger nav -->
     <header class="main-header">
         <div class="logo">
-            <a href="#" style="letter-spacing: 0.3em; font-weight: 500;">V A R S H I N I</a>
+            <a href="#" aria-label="Varshini home">V A R S H I N I</a>
         </div>
-        <nav class="nav-links">
+        <nav class="nav-links" id="mainNav" aria-label="Main navigation">
             <a href="#about" class="nav-item">ABOUT</a>
             <a href="#music" class="nav-item">MUSIC</a>
             <a href="#celestial" class="nav-item">ASTROPHYSICS</a>
             <a href="#poetry" class="nav-item">POETRY</a>
             <a href="#bookshelf" class="nav-item">READING</a>
         </nav>
-        <a href="#connect" class="connect-btn">CONNECT</a>
+        <a href="#connect" class="connect-btn desktop-only">CONNECT</a>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
     </header>
+
+    <!-- Mobile nav drawer -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true">
+        <nav class="mobile-nav" role="navigation">
+            <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
+            <a href="#about" class="mobile-nav-item">ABOUT</a>
+            <a href="#music" class="mobile-nav-item">MUSIC</a>
+            <a href="#celestial" class="mobile-nav-item">ASTROPHYSICS</a>
+            <a href="#poetry" class="mobile-nav-item">POETRY</a>
+            <a href="#bookshelf" class="mobile-nav-item">READING</a>
+            <a href="#connect" class="mobile-nav-item connect-mobile">CONNECT</a>
+        </nav>
+    </div>
 
     <main class="portfolio-container">
 
+        <!-- HERO -->
         <section class="hero-section" id="about">
             <div class="hero-content">
-                <span class="hero-label"
-                    style="letter-spacing: 0.15em; font-size: 0.8rem; font-weight: 600; opacity: 0.7;">GRADE 9 //
-                    ROCKWELL INTERNATIONAL SCHOOL</span>
-                <h1 class="hero-title"
-                    style="font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 400; line-height: 1.1; margin-top: 15px;">
-                    Singer, Guitarist, Poet &amp;<br>Aspiring Astrophysicist.</h1>
-                <p class="hero-bio" style="margin-top: 20px; max-width: 540px; line-height: 1.5;">Building harmony
-                    between cosmic frequencies and guitar chords.<br>Hardworking, creative, and ambitious, capturing the
-                    universe through stanzas and six strings.</p>
-                <div class="hero-buttons" style="margin-top: 30px; display: flex; gap: 15px;">
-                    <a href="#music" class="primary-btn"
-                        style="background-color: #ffb7c5; color: #000; border: none; padding: 12px 28px; border-radius: 30px; font-weight: 500; text-decoration: none;">EXPLORE
-                        MUSIC</a>
-                    <a href="#celestial" class="secondary-btn"
-                        style="border: 1px solid #000; color: #000; padding: 12px 28px; border-radius: 30px; font-weight: 500; text-decoration: none;">STELLAR
-                        ATLAS</a>
+                <span class="hero-label">GRADE 9 // ROCKWELL INTERNATIONAL SCHOOL</span>
+                <h1 class="hero-title">Singer, Guitarist, Poet &amp;<br>Aspiring Astrophysicist.</h1>
+                <p class="hero-bio">Building harmony between cosmic frequencies and guitar chords.<br>Hardworking,
+                    creative, and ambitious, capturing the universe through stanzas and six strings.</p>
+                <div class="hero-buttons">
+                    <a href="#music" class="primary-btn">EXPLORE MUSIC</a>
+                    <a href="#celestial" class="secondary-btn">STELLAR ATLAS</a>
                 </div>
             </div>
             <div class="hero-visual">
                 <div class="aesthetic-canvas float-animation">
-                    <svg class="canvas-svg" viewBox="0 0 200 200">
+                    <svg class="canvas-svg" viewBox="0 0 200 200" aria-hidden="true">
                         <circle class="glow-circle glow-pink pulse" cx="60" cy="70" r="50" />
                         <circle class="glow-circle glow-yellow pulse delay-1" cx="140" cy="130" r="45" />
                         <circle class="orbit-line" cx="100" cy="100" r="75" />
@@ -93,44 +101,40 @@
             </div>
         </section>
 
-        <section class="intro-grid">
+        <!-- INTRO CARDS -->
+        <section class="intro-grid" aria-label="About Varshini">
             <div class="intro-card">
-                <span class="card-num">01 / CHARACTER</span>
-                <h2 class="card-heading"
-                    style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.8rem; margin: 10px 0;">
-                    Hardworking &amp; Creative</h2>
+                <span class="card-num">CHARACTER</span>
+                <h2 class="card-heading">Hardworking &amp; Creative</h2>
                 <p class="card-text">Approaching academic research and music with rigorous discipline, seeking new ways
                     to bridge the musical notes and the equations of the universe.</p>
             </div>
             <div class="intro-card border-left">
-                <span class="card-num">02 / BACKGROUND</span>
-                <h2 class="card-heading"
-                    style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.8rem; margin: 10px 0;">
-                    Rockwell International</h2>
+                <span class="card-num">BACKGROUND</span>
+                <h2 class="card-heading">Rockwell International</h2>
                 <p class="card-text">Currently in Grade 9, actively participating in competitions, leading science
                     fairs, and performing as a lead singer-guitarist.</p>
             </div>
             <div class="intro-card border-left">
-                <span class="card-num">03 / AMBITION</span>
-                <h2 class="card-heading"
-                    style="font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.8rem; margin: 10px 0;">
-                    Astrophysicist &amp; Singer</h2>
+                <span class="card-num">AMBITION</span>
+                <h2 class="card-heading">Astrophysicist &amp; Singer</h2>
                 <p class="card-text">Fascinated by cosmology, stellar mechanics, and guitar. Aiming to compose songs
                     that translate mathematical beauties.</p>
             </div>
         </section>
 
+        <!-- MASONRY GRID -->
         <section class="lookbook-masonry">
 
+            <!-- I. MUSIC PLAYER -->
             <div id="music" class="masonry-item highlight-card">
                 <div class="item-header">
                     <span class="item-index">I / THE SONG LOG</span>
-                    <span class="status-tag live" style="background-color: #fffdd0; color: #000;">Songs that shaped my
-                        life</span>
+                    <span class="status-tag live">Songs that shaped my life</span>
                 </div>
                 <div class="music-player-panel">
                     <div class="player-top">
-                        <div class="vinyl-mock">
+                        <div class="vinyl-mock" id="vinylDisc">
                             <div class="vinyl-disc">
                                 <div class="vinyl-label">
                                     <div class="vinyl-center"></div>
@@ -138,13 +142,33 @@
                             </div>
                         </div>
                         <div class="player-meta">
-                            <h2 class="track-title">505</h2>
-                            <p class="track-artist">Arctic Monkeys Cover</p>
+                            <h2 class="track-title" id="trackTitle">505</h2>
+                            <p class="track-artist" id="trackArtist">Arctic Monkeys Cover</p>
                             <span class="track-badge">Electric Guitar &amp; Vocals</span>
                         </div>
                     </div>
 
-                    <div class="visualizer-container">
+                    <!-- Progress bar -->
+                    <div class="audio-progress-area">
+                        <span class="time-label" id="currentTime">0:00</span>
+                        <div class="progress-track" id="progressTrack" role="slider" aria-label="Song progress"
+                            tabindex="0">
+                            <div class="progress-fill-audio" id="progressFill"></div>
+                            <div class="progress-thumb" id="progressThumb"></div>
+                        </div>
+                        <span class="time-label" id="totalTime">0:00</span>
+                    </div>
+
+                    <!-- Hidden audio element -->
+                    <audio id="audioPlayer" preload="metadata"></audio>
+
+                    <!-- Upload hint for owner -->
+                    <div class="upload-hint" id="uploadHint">
+                        <span>🎵 Add audio files named <code>505.mp3</code>, <code>linger.mp3</code>,
+                            <code>thecure.mp3</code> in the same folder to enable playback.</span>
+                    </div>
+
+                    <div class="visualizer-container" id="visualizerContainer" aria-hidden="true">
                         <div class="visualizer-bar"></div>
                         <div class="visualizer-bar"></div>
                         <div class="visualizer-bar"></div>
@@ -164,7 +188,7 @@
                     </div>
 
                     <div class="player-controls">
-                        <button class="player-btn prev-btn" aria-label="Previous Track">
+                        <button class="player-btn prev-btn" id="prevBtn" aria-label="Previous Track">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="1.5">
                                 <polygon points="19,20 9,12 19,4" fill="currentColor" />
@@ -172,132 +196,122 @@
                             </svg>
                         </button>
                         <button class="player-btn play-btn" id="playBtn" aria-label="Play Track">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="play-icon" id="playIcon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" id="playIcon">
                                 <polygon points="5,3 19,12 5,21" fill="currentColor" />
                             </svg>
                         </button>
-                        <button class="player-btn next-btn" aria-label="Next Track">
+                        <button class="player-btn next-btn" id="nextBtn" aria-label="Next Track">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="1.5">
                                 <polygon points="5,4 15,12 5,20" fill="currentColor" />
                                 <line x1="19" y1="4" x2="19" y2="20" stroke-linecap="round" />
                             </svg>
                         </button>
+                        <div class="volume-area">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.5" aria-hidden="true">
+                                <polygon points="11,5 6,9 2,9 2,15 6,15 11,19" fill="currentColor" stroke="none" />
+                                <path d="M15.54,8.46a5,5,0,0,1,0,7.07" />
+                                <path d="M19.07,4.93a10,10,0,0,1,0,14.14" />
+                            </svg>
+                            <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.05"
+                                value="0.8" aria-label="Volume">
+                        </div>
                     </div>
 
                     <div class="track-selector-box">
                         <div class="selector-heading">CHOOSE RECORDING</div>
-                        <div class="track-row active" data-track="fiveO5">
+                        <div class="track-row active" data-track="fiveO5" data-file="505.mp3" data-title="505"
+                            data-artist="Arctic Monkeys Cover">
                             <span class="track-num">01</span>
                             <span class="track-name">505 (Arctic Monkeys Cover)</span>
-                            <button class="lyrics-trigger-btn" data-song="fiveO5">Notes</button>
+                            <button class="lyrics-trigger-btn" data-song="fiveO5"
+                                aria-label="View notes for 505">Notes</button>
                         </div>
-                        <div class="track-row" data-track="linger">
+                        <div class="track-row" data-track="linger" data-file="linger.mp3" data-title="Linger"
+                            data-artist="The Cranberries Cover">
                             <span class="track-num">02</span>
                             <span class="track-name">Linger (The Cranberries Cover)</span>
-                            <button class="lyrics-trigger-btn" data-song="linger">Notes</button>
+                            <button class="lyrics-trigger-btn" data-song="linger"
+                                aria-label="View notes for Linger">Notes</button>
                         </div>
-                        <div class="track-row" data-track="theCure">
+                        <div class="track-row" data-track="theCure" data-file="thecure.mp3" data-title="The Cure"
+                            data-artist="Olivia Rodrigo Cover">
                             <span class="track-num">03</span>
                             <span class="track-name">The Cure (Olivia Rodrigo Cover)</span>
-                            <button class="lyrics-trigger-btn" data-song="theCure">Notes</button>
+                            <button class="lyrics-trigger-btn" data-song="theCure"
+                                aria-label="View notes for The Cure">Notes</button>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- II. STELLAR ATLAS -->
             <div id="celestial" class="masonry-item">
                 <div class="item-header">
                     <span class="item-index">II / THE STELLAR ATLAS</span>
-                    <span class="status-tag science"
-                        style="background-color: #e0f2fe; color: #0369a1;">ASTROPHYSICS</span>
+                    <span class="status-tag science">ASTROPHYSICS</span>
                 </div>
                 <div class="astro-map-container">
-                    <p class="astro-instructions"
-                        style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; opacity: 0.8; margin-bottom: 15px;">
-                        Click stars to trace cosmological notes</p>
-
-                    <div class="sky-chart">
-                        <svg class="chart-lines" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <p class="astro-instructions">Click stars to trace cosmological notes</p>
+                    <div class="sky-chart" role="group" aria-label="Interactive star chart">
+                        <svg class="chart-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
                             <line class="const-line" x1="25" y1="35" x2="75" y2="25" />
                             <line class="const-line" x1="75" y1="25" x2="50" y2="75" />
                             <line class="const-line" x1="50" y1="75" x2="25" y2="35" />
                         </svg>
-
-                        <button class="star-node" data-star="sirius" style="top: 35%; left: 25%;">
+                        <button class="star-node" data-star="sirius" style="top:35%;left:25%">
                             <div class="star-dot"></div>
                             <span class="star-name">Sirius</span>
                         </button>
-                        <button class="star-node" data-star="vega" style="top: 25%; left: 75%;">
+                        <button class="star-node" data-star="vega" style="top:25%;left:75%">
                             <div class="star-dot"></div>
                             <span class="star-name">Vega</span>
                         </button>
-                        <button class="star-node" data-star="polaris" style="top: 75%; left: 50%;">
+                        <button class="star-node" data-star="polaris" style="top:75%;left:50%">
                             <div class="star-dot"></div>
                             <span class="star-name">Polaris</span>
                         </button>
                     </div>
-
-                    <div class="star-detail-panel" id="starDetailPanel">
+                    <div class="star-detail-panel" id="starDetailPanel" role="region" aria-live="polite">
                         <div class="panel-header">
                             <h4 class="star-detail-title" id="starDetailTitle">Star Telemetry</h4>
-                            <button class="panel-close" id="panelCloseBtn" aria-label="Close panel">&times;</button>
+                            <button class="panel-close" id="panelCloseBtn"
+                                aria-label="Close telemetry panel">&times;</button>
                         </div>
                         <p class="star-detail-content" id="starDetailContent">Telemetry offline.</p>
                     </div>
                 </div>
             </div>
 
+            <!-- III. POETRY -->
             <div id="poetry" class="masonry-item">
                 <div class="item-header">
                     <span class="item-index">III / THE VERSE LAB</span>
                     <span class="status-tag literary">POETRY JOURNAL</span>
                 </div>
-
-                <div class="poetry-notebook" style="height: auto; min-height: 320px;">
-                    <div class="notebook-spine"></div>
-                    <div class="notebook-sheet"
-                        style="height: auto; min-height: 300px; display: flex; flex-direction: column; justify-content: space-between; padding: 20px;">
+                <div class="poetry-notebook">
+                    <div class="notebook-spine" aria-hidden="true"></div>
+                    <div class="notebook-sheet">
                         <div class="sheet-header">
-                            <span class="sheet-date">April 2026</span>
-                            <span class="sheet-counter"><span id="currentSheetPage">1</span>/1</span>
+                            <span class="sheet-date" id="poemDate">April 2026</span>
+                            <span class="sheet-counter"><span id="currentSheetPage">1</span> / <span
+                                    id="totalPoems">3</span></span>
                         </div>
-
-                        <div class="sheet-content"
-                            style="flex-grow: 1; margin-top: 15px; margin-bottom: 15px; height: auto;">
-                            <h3 class="poem-title" id="poemTitle"
-                                style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 12px; line-height: 1.2;">
-                                My Second Home</h3>
-                            <p class="poem-body" id="poemBody"
-                                style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; line-height: 1.6; white-space: normal; overflow: visible; height: auto; display: block; margin: 0; padding-bottom: 15px;">
-                                I sat in those very classrooms<br>
-                                Slipping from the lectures of European trade<br>
-                                Etching my thoughts into the wall<br>
-                                Leaving behind a piece of my mind<br>
-                                In return for memories that run in my dreams<br><br>
-                                I wandered in those very classrooms<br>
-                                Turning my head from side to side<br>
-                                To paint the portraits of people<br>
-                                I lived with during the day<br><br>
-                                I smile, I cry, I laugh, I try<br>
-                                In those very classrooms<br>
-                                With all the people who did<br>
-                                All those things with me
-                            </p>
+                        <div class="sheet-content">
+                            <h3 class="poem-title" id="poemTitle">My Second Home</h3>
+                            <p class="poem-body" id="poemBody"></p>
                         </div>
-
-                        <div class="sheet-footer"
-                            style="margin-top: auto; padding-top: 10px; display: flex; justify-content: space-between; align-items: center;">
-                            <button class="sheet-nav-btn" id="prevPoemBtn" aria-label="Previous Page">
+                        <div class="sheet-footer">
+                            <button class="sheet-nav-btn" id="prevPoemBtn" aria-label="Previous poem">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2">
                                     <line x1="19" y1="12" x2="5" y2="12"></line>
                                     <polyline points="12 19 5 12 12 5"></polyline>
                                 </svg>
                             </button>
-                            <span class="notebook-brand" style="letter-spacing: 0.1em; font-size: 0.75rem;">VARSHINI'S
-                                JOURNAL</span>
-                            <button class="sheet-nav-btn" id="nextPoemBtn" aria-label="Next Page">
+                            <span class="notebook-brand">VARSHINI'S JOURNAL</span>
+                            <button class="sheet-nav-btn" id="nextPoemBtn" aria-label="Next poem">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2">
                                     <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -309,119 +323,76 @@
                 </div>
             </div>
 
+            <!-- IV. BOOKSHELF -->
             <div id="bookshelf" class="masonry-item">
                 <div class="item-header">
                     <span class="item-index">IV / THE BOOKSHELF</span>
                     <span class="status-tag creative">READING JOURNAL</span>
                 </div>
-
                 <div class="reading-journal-box">
-                    <p class="reading-intro" style="font-size: 0.95rem; margin-bottom: 20px;">A curated list of my all
-                        time favourites</p>
-
-                    <div class="shelf-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
-                        <div class="book-card"
-                            style="display: flex; flex-direction: column; justify-content: space-between;">
-                            <div class="book-cover color-yellow"
-                                style="background-color: #fef08a; padding: 15px; border-radius: 12px; min-height: 110px;">
-                                <span class="book-genre"
-                                    style="font-size: 0.7rem; opacity: 0.6; text-transform: uppercase;">Fiction</span>
-                                <h4 class="book-title-cover"
-                                    style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; margin: 8px 0 4px 0; font-weight: 400;">
-                                    Percy Jackson</h4>
-                                <span class="book-author" style="font-size: 0.75rem; opacity: 0.7;">Rick Riordan</span>
+                    <p class="reading-intro">A curated list of my all time favourites</p>
+                    <div class="shelf-grid">
+                        <div class="book-card">
+                            <div class="book-cover" style="background-color:#fef08a">
+                                <span class="book-genre">Fiction</span>
+                                <h4 class="book-title-cover">Percy Jackson</h4>
+                                <span class="book-author">Rick Riordan</span>
                             </div>
-                            <div class="book-info" style="margin-top: 8px;">
-                                <div class="progress-bar-container"
-                                    style="background: #e5e7eb; height: 4px; width: 100%; border-radius: 2px; overflow: hidden;">
-                                    <div class="progress-fill" style="width: 100%; background: #000; height: 100%;">
-                                    </div>
+                            <div class="book-info">
+                                <div class="progress-bar-container">
+                                    <div class="progress-fill" style="width:100%"></div>
                                 </div>
-                                <div class="book-meta"
-                                    style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px; font-size: 0.75rem;">
-                                    <span class="progress-text" style="opacity: 0.6;">Finished</span>
-                                    <a href="#" class="notes-link"
-                                        style="color: #000; text-decoration: underline; font-weight: 500;">Notes</a>
+                                <div class="book-meta">
+                                    <span class="progress-text">Finished</span>
+                                    <a href="#" class="notes-link">Notes</a>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="book-card"
-                            style="display: flex; flex-direction: column; justify-content: space-between;">
-                            <div class="book-cover color-pink"
-                                style="background-color: #fbcfe8; padding: 15px; border-radius: 12px; min-height: 110px;">
-                                <span class="book-genre"
-                                    style="font-size: 0.7rem; opacity: 0.6; text-transform: uppercase;">Fiction</span>
-                                <h4 class="book-title-cover"
-                                    style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; margin: 8px 0 4px 0; font-weight: 400;">
-                                    Hunger Games</h4>
-                                <span class="book-author" style="font-size: 0.75rem; opacity: 0.7;">Suzanne
-                                    Collins</span>
+                        <div class="book-card">
+                            <div class="book-cover" style="background-color:#fbcfe8">
+                                <span class="book-genre">Fiction</span>
+                                <h4 class="book-title-cover">Hunger Games</h4>
+                                <span class="book-author">Suzanne Collins</span>
                             </div>
-                            <div class="book-info" style="margin-top: 8px;">
-                                <div class="progress-bar-container"
-                                    style="background: #e5e7eb; height: 4px; width: 100%; border-radius: 2px; overflow: hidden;">
-                                    <div class="progress-fill" style="width: 100%; background: #000; height: 100%;">
-                                    </div>
+                            <div class="book-info">
+                                <div class="progress-bar-container">
+                                    <div class="progress-fill" style="width:100%"></div>
                                 </div>
-                                <div class="book-meta"
-                                    style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px; font-size: 0.75rem;">
-                                    <span class="progress-text" style="opacity: 0.6;">Finished</span>
-                                    <a href="#" class="notes-link"
-                                        style="color: #000; text-decoration: underline; font-weight: 500;">Notes</a>
+                                <div class="book-meta">
+                                    <span class="progress-text">Finished</span>
+                                    <a href="#" class="notes-link">Notes</a>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="book-card"
-                            style="display: flex; flex-direction: column; justify-content: space-between;">
-                            <div class="book-cover color-ivory"
-                                style="background-color: #f5f5f4; padding: 15px; border-radius: 12px; min-height: 110px;">
-                                <span class="book-genre"
-                                    style="font-size: 0.7rem; opacity: 0.6; text-transform: uppercase;">Fiction</span>
-                                <h4 class="book-title-cover"
-                                    style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; margin: 8px 0 4px 0; font-weight: 400;">
-                                    Inheritance Games</h4>
-                                <span class="book-author" style="font-size: 0.75rem; opacity: 0.7;">Jennifer Lynn
-                                    Barnes</span>
+                        <div class="book-card">
+                            <div class="book-cover" style="background-color:#f5f5f4">
+                                <span class="book-genre">Fiction</span>
+                                <h4 class="book-title-cover">Inheritance Games</h4>
+                                <span class="book-author">Jennifer Lynn Barnes</span>
                             </div>
-                            <div class="book-info" style="margin-top: 8px;">
-                                <div class="progress-bar-container"
-                                    style="background: #e5e7eb; height: 4px; width: 100%; border-radius: 2px; overflow: hidden;">
-                                    <div class="progress-fill" style="width: 60%; background: #000; height: 100%;">
-                                    </div>
+                            <div class="book-info">
+                                <div class="progress-bar-container">
+                                    <div class="progress-fill" style="width:60%"></div>
                                 </div>
-                                <div class="book-meta"
-                                    style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px; font-size: 0.75rem;">
-                                    <span class="progress-text" style="opacity: 0.6;">60%</span>
-                                    <a href="#" class="notes-link"
-                                        style="color: #000; text-decoration: underline; font-weight: 500;">Notes</a>
+                                <div class="book-meta">
+                                    <span class="progress-text">60%</span>
+                                    <a href="#" class="notes-link">Notes</a>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="book-card"
-                            style="display: flex; flex-direction: column; justify-content: space-between;">
-                            <div class="book-cover color-cream"
-                                style="background-color: #fef9c3; padding: 15px; border-radius: 12px; min-height: 110px;">
-                                <span class="book-genre"
-                                    style="font-size: 0.7rem; opacity: 0.6; text-transform: uppercase;">FICTION</span>
-                                <h4 class="book-title-cover"
-                                    style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; margin: 8px 0 4px 0; font-weight: 400;">
-                                    One of us is Lying</h4>
-                                <span class="book-author" style="font-size: 0.75rem; opacity: 0.7;">Karen McManus</span>
+                        <div class="book-card">
+                            <div class="book-cover" style="background-color:#fef9c3">
+                                <span class="book-genre">Fiction</span>
+                                <h4 class="book-title-cover">One of Us Is Lying</h4>
+                                <span class="book-author">Karen McManus</span>
                             </div>
-                            <div class="book-info" style="margin-top: 8px;">
-                                <div class="progress-bar-container"
-                                    style="background: #e5e7eb; height: 4px; width: 100%; border-radius: 2px; overflow: hidden;">
-                                    <div class="progress-fill" style="width: 100%; background: #000; height: 100%;">
-                                    </div>
+                            <div class="book-info">
+                                <div class="progress-bar-container">
+                                    <div class="progress-fill" style="width:100%"></div>
                                 </div>
-                                <div class="book-meta"
-                                    style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px; font-size: 0.75rem;">
-                                    <span class="progress-text" style="opacity: 0.6;">Finished</span>
-                                    <a href="#" class="notes-link"
-                                        style="color: #000; text-decoration: underline; font-weight: 500;">Notes</a>
+                                <div class="book-meta">
+                                    <span class="progress-text">Finished</span>
+                                    <a href="#" class="notes-link">Notes</a>
                                 </div>
                             </div>
                         </div>
@@ -431,6 +402,7 @@
 
         </section>
 
+        <!-- CONNECT -->
         <section id="connect" class="connect-section">
             <div class="connect-card">
                 <div class="connect-text-side">
@@ -440,15 +412,16 @@
                         observations, or custom code? Drop a line into the transmission log.</p>
                 </div>
                 <div class="connect-form-side">
-                    <form id="minimalForm" class="minimal-form">
+                    <form id="minimalForm" class="minimal-form" novalidate>
                         <div class="form-row">
                             <label class="form-label" for="formName">NAME / DECK IDENTITY</label>
-                            <input class="form-input" type="text" id="formName" placeholder="Your identity..." required>
+                            <input class="form-input" type="text" id="formName" placeholder="Your identity..." required
+                                autocomplete="name">
                         </div>
                         <div class="form-row">
                             <label class="form-label" for="formEmail">DIGITAL MAIL BOX</label>
                             <input class="form-input" type="email" id="formEmail" placeholder="yourname@domain.com"
-                                required>
+                                required autocomplete="email">
                         </div>
                         <div class="form-row">
                             <label class="form-label" for="formMessage">TRANSMISSION BODY</label>
@@ -457,7 +430,7 @@
                         </div>
                         <button class="submit-btn" type="submit">Send Transmission</button>
                     </form>
-                    <div id="formSuccessAlert" class="form-success-alert hidden">
+                    <div id="formSuccessAlert" class="form-success-alert hidden" role="alert">
                         <p class="success-message">✦ Transmission recorded successfully. Thank you.</p>
                     </div>
                 </div>
@@ -484,10 +457,11 @@
         </div>
     </footer>
 
-    <div class="overlay-drawer" id="overlayDrawer">
+    <!-- OVERLAY DRAWER -->
+    <div class="overlay-drawer" id="overlayDrawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
         <div class="drawer-backdrop" id="drawerBackdrop"></div>
         <div class="drawer-content">
-            <button class="drawer-close" id="closeDrawerBtn" aria-label="Close popup window">&times;</button>
+            <button class="drawer-close" id="closeDrawerBtn" aria-label="Close panel">&times;</button>
             <div class="drawer-header">
                 <span class="drawer-meta" id="drawerMeta">TRACK MODULE</span>
                 <h3 class="drawer-title" id="drawerTitle">Track Title</h3>
@@ -498,7 +472,7 @@
                     <span class="guide-title">GUITAR CHORDS TRANSCRIPT</span>
                     <div class="chords-list" id="chordsList"></div>
                 </div>
-                <p class="lyrics-sheet" id="drawerMainText">Prose lines loading...</p>
+                <p class="lyrics-sheet" id="drawerMainText">Loading…</p>
             </div>
         </div>
     </div>
